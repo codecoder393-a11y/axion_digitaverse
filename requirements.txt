@@ -1,0 +1,10 @@
+Flask
+Flask-Cors
+gunicorn
+requests
+pytest
+numpy
+scipy
+pandas
+werkzeug
+google-generativeai

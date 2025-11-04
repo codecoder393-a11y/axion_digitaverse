@@ -1,0 +1,31 @@
+# Python virtual environment
+venv/
+.venv/
+env/
+ENV/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables
+.env
+
+# IDE settings
+.vscode/
+.idea/
+
+# Database
+*.db
+*.sqlite3
+
+# Logs
+*.log
+
+# Local development settings
+instance/
+.webassets-cache
+
+# Message store (if you want to exclude the development message store)
+messages_offchain.json

@@ -1,0 +1,72 @@
+[
+  {
+    "type": "property",
+    "id": "ee53ca32-cbb4-422c-b5d4-943db0147b06",
+    "title": "Commercial Land",
+    "price": 290000.0,
+    "location": "Waterfalls",
+    "description": "Selling a 10 Acre Land in Tauya Waterfalls for commercial use.",
+    "owner_public_key": "a3a2afda3a17cc26ec134f7f1d09fe5c1615f0ba1ef2a2e4fe754e1987910b05",
+    "verified": false,
+    "images": [
+      "/uploads/properties/ee53ca32-cbb4-422c-b5d4-943db0147b06/34004b44-68c2-4fbb-be28-aae3fdf7c068_1755619137957.jpg"
+    ],
+    "documents": [
+      {
+        "title": "How To Trade Gold.pdf",
+        "hash": "6df65d4381aded6450c3342c4ba351dcaf2726cecc0230b58dd1ed52bc8b6e79",
+        "verified": false
+      }
+    ],
+    "created_at": "2025-10-29T07:11:29.066581",
+    "updated_at": "2025-10-29T07:11:29.076455",
+    "gas": 0.01
+  },
+  {
+    "type": "property",
+    "id": "29a47202-395c-4e74-b22c-a8fc50d4d1ef",
+    "title": "Commercial Land",
+    "price": 290000.0,
+    "location": "Waterfalls",
+    "description": "Selling a 10 Acre Land in Tauya Waterfalls for commercial use.",
+    "owner_public_key": "a3a2afda3a17cc26ec134f7f1d09fe5c1615f0ba1ef2a2e4fe754e1987910b05",
+    "verified": false,
+    "images": [
+      "/uploads/properties/29a47202-395c-4e74-b22c-a8fc50d4d1ef/ad046d54-9d4b-4373-96ea-fe694b757779_1755619137957.jpg"
+    ],
+    "documents": [
+      {
+        "title": "How To Trade Gold.pdf",
+        "hash": "6df65d4381aded6450c3342c4ba351dcaf2726cecc0230b58dd1ed52bc8b6e79",
+        "verified": false
+      }
+    ],
+    "created_at": "2025-10-29T07:11:59.304691",
+    "updated_at": "2025-10-29T07:11:59.304718",
+    "gas": 0.01
+  },
+  {
+    "type": "property",
+    "id": "dab0b68e-5cd2-4e00-b81c-cc5d13eed202",
+    "title": "Residential House",
+    "price": 85000.0,
+    "location": "Harare",
+    "description": "Located in Waterfalls, with 10000 square meter yard covered in loan and flowers",
+    "owner_public_key": "a3a2afda3a17cc26ec134f7f1d09fe5c1615f0ba1ef2a2e4fe754e1987910b05",
+    "verified": false,
+    "status": "available",
+    "images": [
+      "/uploads/properties/dab0b68e-5cd2-4e00-b81c-cc5d13eed202/9c8f9d0f-2139-4ee9-ad0a-b04776d08dc4_real estate.jpg"
+    ],
+    "documents": [
+      {
+        "title": "NLTK.pdf",
+        "hash": "3a89036eea330c49f22f039b946caa8b46d83973bca7d60c75ba315bca00f308",
+        "verified": false
+      }
+    ],
+    "created_at": "2025-11-04T06:39:16.743382",
+    "updated_at": "2025-11-04T06:39:16.796567",
+    "gas": 0.01
+  }
+]
