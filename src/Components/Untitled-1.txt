@@ -1,0 +1,11 @@
+axion_digitaverse/
+│
+├── blockchain/
+│   ├── __init__.py
+│   ├── core.py
+│   └── utils.py
+│
+├── node.py                # Each user runs this to join the network as a node
+├── p2p.py                 # Peer-to-peer networking logic
+├── requirements.txt
+└── README.md

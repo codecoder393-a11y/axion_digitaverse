@@ -1,0 +1,44 @@
+[
+  {
+    "index": 0,
+    "previous_hash": "0",
+    "timestamp": 1761832608.8644743,
+    "data": {
+      "type": "genesis"
+    },
+    "nonce": 0,
+    "hash": "f367357dd1563cb163c9b75ea6516c44cce56640ca2bff9b1f7b9e41587190c3"
+  },
+  {
+    "index": 1,
+    "previous_hash": "f367357dd1563cb163c9b75ea6516c44cce56640ca2bff9b1f7b9e41587190c3",
+    "timestamp": 1761832608.9007046,
+    "data": [
+      {
+        "type": "user",
+        "username": "zimtechguru",
+        "profilePic": "",
+        "address": "a3a2afda3a17cc26ec134f7f1d09fe5c1615f0ba1ef2a2e4fe754e1987910b05",
+        "privateKey": "3547423487c782ecb41223126b302ea8c0af5bcb7beaf58dc8882697094598f3",
+        "gas": 0
+      }
+    ],
+    "nonce": 29647,
+    "hash": "0000c0bcda4a475c2422260673e3873f0fefbbdf60b9172b496babd676864eb1"
+  },
+  {
+    "index": 2,
+    "previous_hash": "0000c0bcda4a475c2422260673e3873f0fefbbdf60b9172b496babd676864eb1",
+    "timestamp": 1761832610.575417,
+    "data": [
+      {
+        "type": "mint",
+        "to": "a3a2afda3a17cc26ec134f7f1d09fe5c1615f0ba1ef2a2e4fe754e1987910b05",
+        "amount": 1000000.0,
+        "gas": 0
+      }
+    ],
+    "nonce": 51180,
+    "hash": "00008048c989c87e03ccf31ce03050635ceeddae55818e12d56a1395a2be11bf"
+  }
+]

@@ -1,0 +1,277 @@
+.welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 64px);
+}
+
+.welcome-card {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  min-height: 300px;
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+.welcome-title {
+  color: #1c92d2;
+  font-weight: 700;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-subtitle {
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  font-size: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.profile-pic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.welcome-username {
+  margin-top: 0.5rem;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.address-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.address-text {
+  color: white;
+  font-weight: bold;
+  margin-right: 0.5rem;
+  font-size: 14px;
+}
+
+.copy-icon {
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.qr-code-container {
+  margin-top: 0.5rem;
+}
+
+.scan-text {
+  font-weight: bold;
+  color: white;
+  margin-top: 0.25rem;
+  font-size: 12px;
+}
+
+.balance-text {
+  font-weight: bold;
+  color: white;
+  margin-top: 0.5rem;
+  font-size: 14px;
+}
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.popup-card {
+  max-width: 350px;
+  padding: 1rem;
+  background: #181c2f;
+}
+
+.navbar-custom {
+  background-color: #007bff; /* Or your preferred color */
+}
+
+.navbar-brand-custom {
+  font-weight: bold;
+  color: white;
+}
+
+.nav-link-custom {
+  font-weight: bold;
+  color: white;
+}
+
+.user-info-container {
+  display: flex;
+  align-items: center;
+}
+
+.profile-pic-navbar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 8px;
+}
+
+.address-navbar {
+  font-weight: bold;
+  color: white;
+  margin-right: 8px;
+}
+
+.wallet-container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.wallet-card {
+  margin: 0 auto;
+  padding: 1.5rem;
+  max-width: 400px;
+  background-color: #343a40;
+}
+
+.wallet-title {
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.wallet-info {
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.wallet-balance {
+  color: #28a745;
+}
+
+.send-acoin-container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.send-acoin-card {
+  margin: 0 auto;
+  padding: 1.5rem;
+  max-width: 400px;
+  background: rgba(30, 40, 60, 0.95);
+}
+
+.send-acoin-title {
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .welcome-card {
+    min-height: auto;
+    padding: 1rem;
+  }
+
+  .welcome-title {
+    font-size: 24px;
+  }
+
+  .welcome-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .profile-pic {
+    width: 50px;
+    height: 50px;
+  }
+
+  .welcome-username {
+    font-size: 16px;
+  }
+
+  .address-text {
+    font-size: 12px;
+  }
+
+  .balance-text {
+    font-size: 12px;
+  }
+
+  .popup-card {
+    max-width: 90%;
+  }
+  
+  .wallet-card {
+    max-width: 90%;
+  }
+
+  .send-acoin-card {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 992px) {
+  .user-info-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .address-navbar {
+    margin-top: 8px;
+  }
+}
+@media (max-width: 576px) {
+  .navbar-brand-custom {
+    font-size: 1rem;
+  }
+  .welcome-card {
+    padding: 0.5rem;
+  }
+  .welcome-title {
+    font-size: 20px;
+  }
+  .welcome-subtitle {
+    font-size: 0.8rem;
+  }
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+  }
+  .welcome-username {
+    font-size: 14px;
+  }
+  .address-text {
+    font-size: 10px;
+  }
+  .balance-text {
+    font-size: 10px;
+  }
+  .popup-card {
+    padding: 0.5rem;
+  }
+  .wallet-card {
+    padding: 1rem;
+  }
+  .send-acoin-card {
+    padding: 1rem;
+  }
+}
