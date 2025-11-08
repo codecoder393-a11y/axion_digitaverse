@@ -18,10 +18,13 @@ async function fetchApi(endpoint: string, options: RequestOptions = {}) {
 
     const response = await fetch(url, {
       ...options,
+      credentials: 'include',  // Include cookies for cross-origin requests
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
         ...options.headers,
       },
+      mode: 'cors'  // Explicitly enable CORS
     });
 
     console.log('Response status:', response.status);

@@ -16,15 +16,24 @@ function LoginForm() {
   const handleLogin = async (e: any) => {
     e.preventDefault();
     try {
-      console.log('Making login request to:', import.meta.env.VITE_API_URL + API_ENDPOINTS.LOGIN);
+      const loginUrl = import.meta.env.VITE_API_URL + API_ENDPOINTS.LOGIN;
+      console.log('Making login request to:', loginUrl);
+      console.log('Login payload:', { publicKey, privateKey });
+      
       const res = await fetchApi(API_ENDPOINTS.LOGIN, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
         body: JSON.stringify({ publicKey, privateKey }),
+        credentials: 'include'  // Include cookies if any
       });
-      console.log('Login response:', res);
+      
+      console.log('Login response status:', res.status);
+      console.log('Login response headers:', Object.fromEntries(res.headers.entries()));
       const data = await res.json();
-      console.log('Login data:', data);
+      console.log('Login response data:', data);
       
       if (res.ok) {
         setUser(data.user); // <-- includes balance
