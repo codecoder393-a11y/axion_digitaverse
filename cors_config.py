@@ -5,7 +5,8 @@ CORS(app, resources={
     r"/*": {
         "origins": [
             "http://localhost:5173",  # Local development
-            "https://your-vercel-domain.vercel.app",  # Your Vercel domain
+            "https://axion-digitaverse.vercel.app",  # Production frontend
+            "https://axion-digitaverse-git-main-codes-projects-57d381b5.vercel.app",  # Preview frontend
         ],
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization"]
