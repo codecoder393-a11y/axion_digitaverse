@@ -33,3 +33,5 @@ venv/
 *.njsproj
 *.sln
 *.sw?
+
+.vercel

@@ -29,7 +29,7 @@ function WelcomePage() {
     const formData = new FormData();
     formData.append("address", user.address);
     formData.append("profilePic", fileInputRef.current.files[0]);
-    const res = await fetch("http://127.0.0.1:5001/api/upload-profile-pic", {
+    const res = await fetch("http://127.0.0.1:5000/api/upload-profile-pic", {
       method: "POST",
       body: formData,
     });
@@ -42,7 +42,7 @@ function WelcomePage() {
   };
 
   const profilePicUrl = user?.profilePic
-    ? `http://127.0.0.1:5001/api/profile-pic/${user.address}?t=${Date.now()}`
+    ? `http://127.0.0.1:5000/api/profile-pic/${user.address}?t=${Date.now()}`
     : "/default-profile.png";
 
   return (

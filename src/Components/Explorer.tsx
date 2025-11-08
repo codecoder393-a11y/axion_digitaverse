@@ -8,7 +8,7 @@ function Explorer() {
 
   useEffect(() => {
     const fetchChain = async () => {
-      const res = await fetch("http://127.0.0.1:5001/api/chain");
+      const res = await fetch("http://127.0.0.1:5000/api/chain");
       const data = await res.json();
       setChain(data);
       setLoading(false);

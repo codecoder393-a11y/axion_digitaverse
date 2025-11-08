@@ -31,7 +31,7 @@ function Wallet() {
   const fetchTransactions = useCallback(async () => {
     if (user?.address) {
       try {
-        const res = await fetch(`http://127.0.0.1:5001/api/transactions/${user.address}`);
+        const res = await fetch(`http://127.0.0.1:5000/api/transactions/${user.address}`);
         const data = await res.json();
         if (res.ok) {
           setTransactions(data.transactions);
@@ -62,7 +62,7 @@ function Wallet() {
   const fetchWalletData = useCallback(async () => {
     if (user?.address) {
       try {
-        const res = await fetch(`http://127.0.0.1:5001/api/wallet/${user.address}`);
+        const res = await fetch(`http://127.0.0.1:5000/api/wallet/${user.address}`);
         const data = await res.json();
         if (res.ok) {
           setBalance(data.balance);
@@ -98,7 +98,7 @@ function Wallet() {
     if (!user) return;
     setStatus("Registering...");
     try {
-      const res = await fetch("http://127.0.0.1:5001/api/register-miner", {
+      const res = await fetch("http://127.0.0.1:5000/api/register-miner", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

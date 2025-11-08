@@ -2,7 +2,6 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { UserProvider, useUser } from "./UserContext";
 import Wallet from "./Components/Wallet";
-import SendAcoin from "./Components/SendAcoin";
 import PythonIDE from "./Components/PythonIDE";
 import Credits from "./Components/Credits";
 import SignUpForm from "./Components/SignUpForm";
@@ -15,9 +14,9 @@ import AxionAIDashboard from "./Components/AxionAIDashboard";
 import Hosting from "./Components/Hosting";
 import About from "./Components/About";
 import Chat from "./Components/Chat";
+
 import {
   FaWallet,
-  FaPaperPlane,
   FaCode,
   FaUserCircle,
   FaUser,
@@ -151,7 +150,7 @@ function Navbar() {
             {user && (
               <li className="nav-item user-info-container">
                 <img
-                  src={user.profilePic ? `http://127.0.0.1:5001/api/profile-pic/${user.address}` : "/default-profile.png"}
+                  src={user.profilePic ? `http://127.0.0.1:5000/api/profile-pic/${user.address}` : "/default-profile.png"}
                   alt="Profile"
                   className="profile-pic-navbar"
                 />

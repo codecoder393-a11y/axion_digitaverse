@@ -28,7 +28,7 @@ const Hosting: React.FC = () => {
             formData.append('file', selectedFile);
 
             try {
-                const response = await fetch('/api/store-file', {
+                const response = await fetch('http://127.0.0.1:5000/api/store-file', {
                     method: 'POST',
                     headers: {
                         'X-Address': user.address,

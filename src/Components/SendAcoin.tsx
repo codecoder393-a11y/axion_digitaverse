@@ -18,7 +18,7 @@ function SendAcoin({ compact = false, onSuccess }: SendAcoinProps) {
   useEffect(() => {
     const fetchMiners = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:5001/api/miners");
+        const res = await fetch("http://127.0.0.1:5000/api/miners");
         if (res.ok) {
           const data = await res.json();
           setMiners(data);
@@ -44,7 +44,7 @@ function SendAcoin({ compact = false, onSuccess }: SendAcoinProps) {
     }
     setStatus("Sending...");
     try {
-        const res = await fetch("http://127.0.0.1:5001/api/transaction", {
+        const res = await fetch("http://127.0.0.1:5000/api/transaction", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -144,14 +144,14 @@ function PythonIDE() {
 
   // Fetch file tree
   useEffect(() => {
-    fetch("http://127.0.0.1:5001/api/ide/list")
+    fetch("http://127.0.0.1:5000/api/ide/list")
       .then(res => res.json())
       .then(setTree);
   }, [refresh]);
 
   // Fetch miners
   useEffect(() => {
-    fetch("http://127.0.0.1:5001/api/miners")
+    fetch("http://127.0.0.1:5000/api/miners")
       .then(res => res.json())
       .then(data => {
         setMiners(data);
@@ -162,7 +162,7 @@ function PythonIDE() {
   // Load file content
   useEffect(() => {
     if (selected) {
-      fetch("http://127.0.0.1:5001/api/ide/open", {
+      fetch("http://127.0.0.1:5000/api/ide/open", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ path: selected }),
@@ -175,25 +175,25 @@ function PythonIDE() {
   }, [selected]);
 
   const handleSave = () => {
-    fetch("http://127.0.0.1:5001/api/ide/save", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: selected, content }) })
+    fetch("http://127.0.0.1:5000/api/ide/save", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: selected, content }) })
       .then(() => setOutput(`File ${selected} saved.`));
   };
 
   const handleRun = () => {
-    fetch("http://127.0.0.1:5001/api/ide/run", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: selected }) })
+    fetch("http://127.0.0.1:5000/api/ide/run", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: selected }) })
       .then(res => res.json())
       .then(data => setOutput(data.output || ""));
   };
 
   const handleCreate = (isFolder: boolean) => {
     if (!newPath) return;
-    fetch("http://127.0.0.1:5001/api/ide/create", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: newPath, isFolder }) })
+    fetch("http://127.0.0.1:5000/api/ide/create", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: newPath, isFolder }) })
       .then(() => { setNewPath(""); setRefresh(r => r + 1); });
   };
 
   const handleDelete = () => {
     if (!selected) return;
-    fetch("http://127.0.0.1:5001/api/ide/delete", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: selected }) })
+    fetch("http://127.0.0.1:5000/api/ide/delete", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: selected }) })
       .then(() => { setSelected(""); setRefresh(r => r + 1); });
   };
 
@@ -203,7 +203,7 @@ function PythonIDE() {
     setDeployStatus("Deploying...");
     try {
       const args = JSON.parse(constructorArgs);
-      const res = await fetch("http://127.0.0.1:5001/api/contract/deploy", {
+      const res = await fetch("http://127.0.0.1:5000/api/contract/deploy", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code: content, args, deployer: user.address, miner: selectedMiner }),
@@ -225,7 +225,7 @@ function PythonIDE() {
     setCallStatus("Calling method...");
     try {
       const args = JSON.parse(callArgs);
-      const res = await fetch("http://127.0.0.1:5001/api/contract/call", {
+      const res = await fetch("http://127.0.0.1:5000/api/contract/call", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ address: callAddress, method: callMethod, args, caller: user.address, miner: selectedMiner }),
