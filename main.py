@@ -1914,4 +1914,4 @@ def upload_property_files(property_id):
     return jsonify({'status': 'success', 'added_images': saved_images, 'added_documents': saved_docs, 'removed': remove_images}), 201
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    app.run()

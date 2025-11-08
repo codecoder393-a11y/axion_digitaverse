@@ -29,3 +29,4 @@ instance/
 
 # Message store (if you want to exclude the development message store)
 messages_offchain.json
+.vercel
