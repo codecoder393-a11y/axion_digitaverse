@@ -12,7 +12,11 @@ interface RequestOptions extends RequestInit {
  */
 async function fetchApi(endpoint: string, options: RequestOptions = {}) {
   try {
-    const response = await fetch(`${API_URL}${endpoint}`, {
+    const url = `${API_URL}${endpoint}`;
+    console.log('Making API request to:', url);
+    console.log('Request options:', options);
+
+    const response = await fetch(url, {
       ...options,
       headers: {
         'Content-Type': 'application/json',
@@ -20,8 +24,12 @@ async function fetchApi(endpoint: string, options: RequestOptions = {}) {
       },
     });
 
+    console.log('Response status:', response.status);
+    console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
+      console.error('Error response:', errorData);
       throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
     }
 

@@ -15,17 +15,26 @@ function LoginForm() {
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
-    const res = await fetchApi(API_ENDPOINTS.LOGIN, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ publicKey, privateKey }),
-    });
-    const data = await res.json();
-    if (res.ok) {
-      setUser(data.user); // <-- includes balance
-      navigate("/wallet");
-    } else {
-      setError(data.message || "Login failed");
+    try {
+      console.log('Making login request to:', import.meta.env.VITE_API_URL + API_ENDPOINTS.LOGIN);
+      const res = await fetchApi(API_ENDPOINTS.LOGIN, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ publicKey, privateKey }),
+      });
+      console.log('Login response:', res);
+      const data = await res.json();
+      console.log('Login data:', data);
+      
+      if (res.ok) {
+        setUser(data.user); // <-- includes balance
+        navigate("/welcome");
+      } else {
+        setError(data.message || "Login failed");
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      setError(err instanceof Error ? err.message : 'Login failed');
     }
   };
 
