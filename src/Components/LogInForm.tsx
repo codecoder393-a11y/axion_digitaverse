@@ -2,6 +2,7 @@ import { useUser } from "../UserContext";
 import { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { fetchApi, API_ENDPOINTS } from "../utils/api";
 
 import { GlassPanel, GlassButton } from './SharedUI';
 
@@ -14,7 +15,7 @@ function LoginForm() {
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
-    const res = await fetch("http://127.0.0.1:5000/api/login", {
+    const res = await fetchApi(API_ENDPOINTS.LOGIN, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ publicKey, privateKey }),

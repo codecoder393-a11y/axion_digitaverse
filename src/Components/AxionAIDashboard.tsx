@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { fetchApi, API_ENDPOINTS } from "../utils/api";
 
 function AxionAIDashboard() {
   const [report, setReport] = useState<any>(null);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5001/api/axion-ai/dashboard")
+    fetchApi(API_ENDPOINTS.AXION_AI_DASHBOARD)
       .then(res => res.json())
       .then(setReport);
   }, []);

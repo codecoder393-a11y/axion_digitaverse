@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaMoneyBillWave } from "react-icons/fa";
+import { fetchApi, API_ENDPOINTS } from "../utils/api";
 
 function AgentDeposit() {
   const [agentAddress, setAgentAddress] = useState("");
@@ -10,7 +11,7 @@ function AgentDeposit() {
   const handleDeposit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("Processing...");
-    const res = await fetch("http://127.0.0.1:5001/api/agent-deposit", {
+    const res = await fetchApi(API_ENDPOINTS.AGENT_DEPOSIT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ agent_address: agentAddress, user_address: userAddress, amount }),

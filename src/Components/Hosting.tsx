@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useUser } from '../UserContext';
 import './Hosting.css';
+import { API_URL, API_ENDPOINTS } from '../utils/api';
 
 const Hosting: React.FC = () => {
     const { user } = useUser();
@@ -28,7 +29,7 @@ const Hosting: React.FC = () => {
             formData.append('file', selectedFile);
 
             try {
-                const response = await fetch('http://127.0.0.1:5000/api/store-file', {
+                const response = await fetch(`${API_URL}${API_ENDPOINTS.STORE_FILE}`, {
                     method: 'POST',
                     headers: {
                         'X-Address': user.address,

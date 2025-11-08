@@ -2,6 +2,7 @@ import { useUser } from "../UserContext";
 import { useState, useEffect } from "react";
 import { FaCopy, FaUser } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { API_ENDPOINTS, fetchApi } from "../utils/api";
 
 import { GlassPanel, GlassButton } from './SharedUI';
 
@@ -27,7 +28,7 @@ function SignUpForm() {
 
   const handleSignUp = async (e: any) => {
     e.preventDefault();
-    const res = await fetch("http://127.0.0.1:5001/api/create-user", {
+    const res = await fetchApi(API_ENDPOINTS.CREATE_USER, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username }),

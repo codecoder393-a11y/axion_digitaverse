@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../UserContext";
+import { fetchApi, API_ENDPOINTS } from "../utils/api";
 import { FaPlay, FaSave, FaFolder, FaFile, FaTrash, FaPlus, FaCloudUploadAlt, FaPhoneAlt, FaServer } from "react-icons/fa";
 // Lightweight in-app editor (no external editor packages) — provides Tab indentation and simple syntax highlighting overlay
 
@@ -144,14 +145,14 @@ function PythonIDE() {
 
   // Fetch file tree
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/ide/list")
+    fetchApi(API_ENDPOINTS.IDE_LIST)
       .then(res => res.json())
       .then(setTree);
   }, [refresh]);
 
   // Fetch miners
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/miners")
+    fetchApi(API_ENDPOINTS.MINERS)
       .then(res => res.json())
       .then(data => {
         setMiners(data);
@@ -162,7 +163,7 @@ function PythonIDE() {
   // Load file content
   useEffect(() => {
     if (selected) {
-      fetch("http://127.0.0.1:5000/api/ide/open", {
+      fetchApi(API_ENDPOINTS.IDE_OPEN, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ path: selected }),
@@ -175,25 +176,25 @@ function PythonIDE() {
   }, [selected]);
 
   const handleSave = () => {
-    fetch("http://127.0.0.1:5000/api/ide/save", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: selected, content }) })
+    fetchApi(API_ENDPOINTS.IDE_SAVE, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: selected, content }) })
       .then(() => setOutput(`File ${selected} saved.`));
   };
 
   const handleRun = () => {
-    fetch("http://127.0.0.1:5000/api/ide/run", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: selected }) })
+    fetchApi(API_ENDPOINTS.IDE_RUN, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: selected }) })
       .then(res => res.json())
       .then(data => setOutput(data.output || ""));
   };
 
   const handleCreate = (isFolder: boolean) => {
     if (!newPath) return;
-    fetch("http://127.0.0.1:5000/api/ide/create", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: newPath, isFolder }) })
+    fetchApi(API_ENDPOINTS.IDE_CREATE, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: newPath, isFolder }) })
       .then(() => { setNewPath(""); setRefresh(r => r + 1); });
   };
 
   const handleDelete = () => {
     if (!selected) return;
-    fetch("http://127.0.0.1:5000/api/ide/delete", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: selected }) })
+    fetchApi(API_ENDPOINTS.IDE_DELETE, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: selected }) })
       .then(() => { setSelected(""); setRefresh(r => r + 1); });
   };
 
@@ -203,7 +204,7 @@ function PythonIDE() {
     setDeployStatus("Deploying...");
     try {
       const args = JSON.parse(constructorArgs);
-      const res = await fetch("http://127.0.0.1:5000/api/contract/deploy", {
+      const res = await fetchApi(API_ENDPOINTS.CONTRACT_DEPLOY, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code: content, args, deployer: user.address, miner: selectedMiner }),
@@ -225,7 +226,7 @@ function PythonIDE() {
     setCallStatus("Calling method...");
     try {
       const args = JSON.parse(callArgs);
-      const res = await fetch("http://127.0.0.1:5000/api/contract/call", {
+      const res = await fetchApi(API_ENDPOINTS.CONTRACT_CALL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ address: callAddress, method: callMethod, args, caller: user.address, miner: selectedMiner }),

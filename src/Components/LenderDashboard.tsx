@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useUser } from "../UserContext";
 import CreateLoan from "./CreateLoan";
 import { motion } from "framer-motion";
+import { fetchApi, API_ENDPOINTS } from "../utils/api";
 
 // Helper function to shorten addresses
 function shortAddress(address: string) {
@@ -16,7 +17,7 @@ function LenderDashboard() {
   const [approved, setApproved] = useState<number | null>(null);
 
   const fetchChain = async () => {
-    const res = await fetch("http://127.0.0.1:5001/api/chain");
+    const res = await fetchApi(API_ENDPOINTS.CHAIN);
     const data = await res.json();
     const myLoans = data.filter((block: any) => block.data.type === "loan" && block.data.lender === user?.address);
     setLoans(myLoans);
@@ -34,7 +35,7 @@ function LenderDashboard() {
   }, []);
 
   const handleApprove = async (loanId: number) => {
-    await fetch("http://127.0.0.1:5001/api/approve-loan", {
+    await fetchApi(API_ENDPOINTS.APPROVE_LOAN, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ loan_id: loanId, lender: user?.address })

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../UserContext";
 import { motion } from "framer-motion";
+import { fetchApi, API_ENDPOINTS } from "../utils/api";
 
 function BorrowerDashboard() {
   const { user } = useUser();
@@ -12,7 +13,7 @@ function BorrowerDashboard() {
 
   useEffect(() => {
     const fetchChain = async () => {
-      const res = await fetch("http://127.0.0.1:5001/api/chain");
+      const res = await fetchApi(API_ENDPOINTS.CHAIN);
       const data = await res.json();
       setLoans(data.filter((block: any) => block.data.type === "loan"));
       setRequests(data.filter((block: any) => block.data.type === "loan_request" && block.data.borrower === user?.address));
@@ -23,7 +24,7 @@ function BorrowerDashboard() {
   }, [user]);
 
   const handleRequest = async (loanId: number) => {
-    await fetch("http://127.0.0.1:5001/api/request-loan", {
+    await fetchApi(API_ENDPOINTS.REQUEST_LOAN, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -35,7 +36,7 @@ function BorrowerDashboard() {
     setRequested(loanId);
     setTimeout(() => setRequested(null), 2000);
     // Refresh requests and approvals
-    const res = await fetch("http://127.0.0.1:5001/api/chain");
+    const res = await fetchApi(API_ENDPOINTS.CHAIN);
     const data = await res.json();
     setRequests(data.filter((block: any) => block.data.type === "loan_request" && block.data.borrower === user?.address));
     setApprovals(data.filter((block: any) => block.data.type === "loan_approval"));

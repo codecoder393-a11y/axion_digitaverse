@@ -1,5 +1,6 @@
 
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { API_URL, API_ENDPOINTS } from "./utils/api";
 import { UserProvider, useUser } from "./UserContext";
 import Wallet from "./Components/Wallet";
 import PythonIDE from "./Components/PythonIDE";
@@ -150,7 +151,7 @@ function Navbar() {
             {user && (
               <li className="nav-item user-info-container">
                 <img
-                  src={user.profilePic ? `http://127.0.0.1:5000/api/profile-pic/${user.address}` : "/default-profile.png"}
+                  src={user.profilePic ? `${API_URL}${API_ENDPOINTS.PROFILE_PIC(user.address)}` : "/default-profile.png"}
                   alt="Profile"
                   className="profile-pic-navbar"
                 />
@@ -179,6 +180,8 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
+          {/* Make root path render the Welcome page so the home page won't be blank */}
+          <Route path="/" element={<WelcomePage />} />
           <Route path="/axion_digitaverse" element={<WelcomePage />} />
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/chain" element={<Explorer />} />

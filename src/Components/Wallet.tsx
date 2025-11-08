@@ -3,6 +3,7 @@ import type { User } from "../UserContext";
 import { useEffect, useState, useCallback } from "react";
 import { FaWallet, FaCopy, FaServer, FaPaperPlane } from "react-icons/fa";
 import SendAcoin from "./SendAcoin";
+import { API_ENDPOINTS, fetchApi } from "../utils/api";
 import "../App.css";
 
 interface Transaction {
@@ -31,7 +32,7 @@ function Wallet() {
   const fetchTransactions = useCallback(async () => {
     if (user?.address) {
       try {
-        const res = await fetch(`http://127.0.0.1:5000/api/transactions/${user.address}`);
+        const res = await fetchApi(API_ENDPOINTS.TRANSACTIONS(user.address));
         const data = await res.json();
         if (res.ok) {
           setTransactions(data.transactions);
@@ -62,7 +63,7 @@ function Wallet() {
   const fetchWalletData = useCallback(async () => {
     if (user?.address) {
       try {
-        const res = await fetch(`http://127.0.0.1:5000/api/wallet/${user.address}`);
+        const res = await fetchApi(API_ENDPOINTS.WALLET(user.address));
         const data = await res.json();
         if (res.ok) {
           setBalance(data.balance);
@@ -98,7 +99,7 @@ function Wallet() {
     if (!user) return;
     setStatus("Registering...");
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/register-miner", {
+      const res = await fetchApi(API_ENDPOINTS.REGISTER_MINER, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

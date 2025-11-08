@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useUser } from "../UserContext";
+import { fetchApi, API_ENDPOINTS } from "../utils/api";
 
 function CreateLoan({ onLoanCreated }: { onLoanCreated: () => void }) {
   const { user } = useUser();
@@ -11,7 +12,7 @@ function CreateLoan({ onLoanCreated }: { onLoanCreated: () => void }) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const res = await fetch("http://127.0.0.1:5001/api/create-loan", {
+    const res = await fetchApi(API_ENDPOINTS.CREATE_LOAN, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

@@ -3,6 +3,7 @@ import { useUser } from "../UserContext";
 import { FaCopy } from "react-icons/fa";
 import { QRCodeCanvas } from "qrcode.react";
 import { useState, useRef } from "react";
+import { API_URL, API_ENDPOINTS } from "../utils/api";
 import "../App.css";
 
 function shortAddress(address: string) {
@@ -29,7 +30,7 @@ function WelcomePage() {
     const formData = new FormData();
     formData.append("address", user.address);
     formData.append("profilePic", fileInputRef.current.files[0]);
-    const res = await fetch("http://127.0.0.1:5000/api/upload-profile-pic", {
+    const res = await fetch(`${API_URL}${API_ENDPOINTS.UPLOAD_PROFILE_PIC}`, {
       method: "POST",
       body: formData,
     });
@@ -42,7 +43,7 @@ function WelcomePage() {
   };
 
   const profilePicUrl = user?.profilePic
-    ? `http://127.0.0.1:5000/api/profile-pic/${user.address}?t=${Date.now()}`
+    ? `${API_URL}${API_ENDPOINTS.PROFILE_PIC(user.address)}?t=${Date.now()}`
     : "/default-profile.png";
 
   return (

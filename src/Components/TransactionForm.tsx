@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useUser } from "../UserContext";
+import { fetchApi, API_ENDPOINTS } from "../utils/api";
 import { motion } from "framer-motion";
 
 function TransactionForm() {
@@ -13,7 +14,7 @@ function TransactionForm() {
     e.preventDefault();
     setLoading(true);
     setStatus("");
-    const res = await fetch("http://127.0.0.1:5000/api/transaction", {
+    const res = await fetchApi(API_ENDPOINTS.TRANSACTION, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

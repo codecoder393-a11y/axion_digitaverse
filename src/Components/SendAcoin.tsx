@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useUser } from "../UserContext";
 import { FaPaperPlane, FaWallet, FaServer } from "react-icons/fa";
+import { fetchApi, API_ENDPOINTS } from "../utils/api";
 
 type SendAcoinProps = {
   compact?: boolean;
@@ -18,7 +19,7 @@ function SendAcoin({ compact = false, onSuccess }: SendAcoinProps) {
   useEffect(() => {
     const fetchMiners = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:5000/api/miners");
+        const res = await fetchApi(API_ENDPOINTS.MINERS);
         if (res.ok) {
           const data = await res.json();
           setMiners(data);
@@ -44,7 +45,7 @@ function SendAcoin({ compact = false, onSuccess }: SendAcoinProps) {
     }
     setStatus("Sending...");
     try {
-        const res = await fetch("http://127.0.0.1:5000/api/transaction", {
+        const res = await fetchApi(API_ENDPOINTS.TRANSACTION, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

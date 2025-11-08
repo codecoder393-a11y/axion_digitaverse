@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../UserContext";
 import { motion } from "framer-motion";
+import { fetchApi, API_ENDPOINTS } from "../utils/api";
 
 function RepayLoan() {
   const { user } = useUser();
@@ -10,7 +11,7 @@ function RepayLoan() {
 
   useEffect(() => {
     const fetchLoans = async () => {
-      const res = await fetch("http://127.0.0.1:5001/api/chain");
+      const res = await fetchApi(API_ENDPOINTS.CHAIN);
       const data = await res.json();
       // Find loans where this user is borrower and not yet repaid
       const requests = data.filter(
@@ -38,7 +39,7 @@ function RepayLoan() {
 
   const handleRepay = async (loan: any) => {
     setStatus("Processing...");
-    const res = await fetch("http://127.0.0.1:5001/api/repay-loan", {
+    const res = await fetchApi(API_ENDPOINTS.REPAY_LOAN, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { fetchApi, API_ENDPOINTS } from "../utils/api";
 
 function ChainViewer() {
   const [chain, setChain] = useState<any[]>([]);
@@ -7,7 +8,7 @@ function ChainViewer() {
 
   useEffect(() => {
     const fetchChain = async () => {
-      const res = await fetch("http://127.0.0.1:5001/api/chain");
+      const res = await fetchApi(API_ENDPOINTS.CHAIN);
       const data = await res.json();
       setChain(data);
       setLoading(false);

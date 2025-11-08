@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaUserSecret, FaCopy } from "react-icons/fa";
+import { fetchApi, API_ENDPOINTS } from "../utils/api";
 
 function RegisterAgent() {
   const [username, setUsername] = useState("");
@@ -10,7 +11,7 @@ function RegisterAgent() {
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("Registering...");
-    const res = await fetch("http://127.0.0.1:5001/api/register-agent", {
+    const res = await fetchApi(API_ENDPOINTS.REGISTER_AGENT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username }),
