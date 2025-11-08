@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_URL, API_ENDPOINTS } from "../utils/api";
 
 function AxionAI() {
   const [prompt, setPrompt] = useState("");
@@ -10,7 +11,7 @@ function AxionAI() {
   const askAI = async () => {
     setLoading(true);
     setReply("");
-    const res = await fetch("https://axion-digitaverse-3.onrender.com/api/axion-ai", {
+    const res = await fetch(`${API_URL}${API_ENDPOINTS.AXION_AI}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt }),
