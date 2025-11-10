@@ -40,5 +40,44 @@
     ],
     "nonce": 51180,
     "hash": "00008048c989c87e03ccf31ce03050635ceeddae55818e12d56a1395a2be11bf"
+  },
+  {
+    "index": 3,
+    "previous_hash": "00008048c989c87e03ccf31ce03050635ceeddae55818e12d56a1395a2be11bf",
+    "timestamp": 1762703312.4256485,
+    "data": [
+      {
+        "type": "profile_update",
+        "address": "a3a2afda3a17cc26ec134f7f1d09fe5c1615f0ba1ef2a2e4fe754e1987910b05",
+        "profilePic": "a3a2afda3a17cc26ec134f7f1d09fe5c1615f0ba1ef2a2e4fe754e1987910b05_1762703312_@00000.png",
+        "gas": 0.01
+      },
+      {
+        "type": "reward",
+        "to": "a3a2afda3a17cc26ec134f7f1d09fe5c1615f0ba1ef2a2e4fe754e1987910b05",
+        "amount": 0.01
+      }
+    ],
+    "nonce": 4963,
+    "hash": "0000d07da7e113101f67da67a3e4de1ece90bba1954eae3dc5dd33f9f2e039b9"
+  },
+  {
+    "index": 4,
+    "previous_hash": "0000d07da7e113101f67da67a3e4de1ece90bba1954eae3dc5dd33f9f2e039b9",
+    "timestamp": 1762703512.5197742,
+    "data": [
+      {
+        "type": "register-miner",
+        "address": "a3a2afda3a17cc26ec134f7f1d09fe5c1615f0ba1ef2a2e4fe754e1987910b05",
+        "gas": 0.01
+      },
+      {
+        "type": "reward",
+        "to": "a3a2afda3a17cc26ec134f7f1d09fe5c1615f0ba1ef2a2e4fe754e1987910b05",
+        "amount": 0.01
+      }
+    ],
+    "nonce": 200685,
+    "hash": "0000864a719280cfdc7611535a59c39b477fffdc1f02e79f9d96020c85bf3023"
   }
 ]
