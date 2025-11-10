@@ -16,8 +16,6 @@ function LoginForm() {
   const handleLogin = async (e: any) => {
     e.preventDefault();
     try {
-      const loginUrl = import.meta.env.VITE_API_URL + API_ENDPOINTS.LOGIN;
-      console.log('Making login request to:', loginUrl);
       console.log('Login payload:', { publicKey, privateKey });
       
       const res = await fetchApi(API_ENDPOINTS.LOGIN, {
