@@ -19,7 +19,7 @@ async function fetchApi(endpoint: string, options: RequestOptions = {}) {
 
     const response = await fetch(url, {
       ...options,
-      credentials: 'include',  // Include cookies for cross-origin requests
+      credentials: 'omit',  // Don't include credentials for now to avoid CORS preflight issues
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
