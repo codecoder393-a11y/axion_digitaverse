@@ -35,7 +35,7 @@ function LoginForm() {
       
       if (res.ok) {
         setUser(data.user); // <-- includes balance
-        navigate("/welcome");
+        navigate("/axion_digitaverse");
       } else {
         setError(data.message || "Login failed");
       }
@@ -46,15 +46,15 @@ function LoginForm() {
   };
 
   return (
-    <div className="container py-5">
-      <form onSubmit={handleLogin} style={{ maxWidth: 400 }} className="mx-auto">
-        <GlassPanel className="p-4">
+    <div className="container py-5 text-white">
+      <form onSubmit={handleLogin} style={{ maxWidth: 400 }} className="mx-auto text-white">
+        <GlassPanel className="p-4 text-white">
           <h2 className="fw-bold text-white text-center">
             <FaUser className="me-2 text-white" /> Login
           </h2>
           <input
             className="form-control mb-3 fw-bold text-white"
-            placeholder="Public Key"
+            placeholder="Public Key" style={{color:'white'}}
             value={publicKey}
             onChange={e => setPublicKey(e.target.value)}
             required

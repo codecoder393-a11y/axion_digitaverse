@@ -42,20 +42,20 @@ const Chat: React.FC = () => {
   }
 
   return (
-    <div className="container py-4">
+    <div className="container py-4 text-white">
       <h3 className="text-white mb-3">Chat</h3>
-      <div className="card p-3" style={{ maxWidth: 900 }}>
-        <div style={{ maxHeight: 400, overflowY: 'auto' }} className="mb-3">
+      <div className="card p-3 text-white" style={{ maxWidth: 900 }}>
+        <div style={{ maxHeight: 400, overflowY: 'auto' }} className="mb-3 text-white">
           {messages.map((m, i) => (
-            <div key={i} className="mb-2">
-              <div className="small text-muted">{m.from} • {m.time}</div>
-              <div className="p-2" style={{ background: 'rgba(30,30,30,0.5)', borderRadius: 8 }}>{m.text}</div>
+            <div key={i} className="mb-2 text-white">
+              <div className="small text-muted text-white">{m.from} • {m.time}</div>
+              <div className="p-2 text-white" style={{ background: 'rgba(30,30,30,0.5)', borderRadius: 8 }}>{m.text}</div>
             </div>
           ))}
           <div ref={bottomRef} />
         </div>
         <div className="d-flex gap-2">
-          <input type="text" className="form-control" placeholder="Type a message..." value={text} onChange={e => setText(e.target.value)} onKeyDown={onKeyDown} />
+          <input type="text" className="form-control text-white" placeholder="Type a message..." value={text} onChange={e => setText(e.target.value)} onKeyDown={onKeyDown} />
           <button className="btn btn-primary" onClick={sendMessage}><FaPaperPlane /></button>
         </div>
       </div>

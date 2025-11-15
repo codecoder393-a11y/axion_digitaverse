@@ -1,4 +1,5 @@
-const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5001';
+const API_URL = 'https://axion-network.onrender.com';
+// const API_URL = 'http://127.0.0.1:5000';
 console.log('API_URL:', API_URL); // Debug log to verify the URL being used
 
 interface RequestOptions extends RequestInit {
