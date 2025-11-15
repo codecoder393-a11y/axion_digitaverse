@@ -1,4 +1,4 @@
-const API_URL = 'https://axion-network.onrender.com';
+const API_URL = 'https://axion-backend-repo-5.onrender.com';
 // const API_URL = 'http://127.0.0.1:5000';
 console.log('API_URL:', API_URL); // Debug log to verify the URL being used
 
